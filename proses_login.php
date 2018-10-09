@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 	if ($data['user_exist'] > 0) {
 		$_SESSION['username'] = $data['username'];
 		$_SESSION['nama'] = $data['nama'];
-		header('location: beranda.php');
+		header('location: halamanawal.php');
 	} else {
 		$_SESSION['pesan_login_registrasi'] = "Username atau Password Salah atau Akun Belum Terdaftar";
 		header('location: login.php');
