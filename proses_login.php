@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
 
 	$data = $u -> user_exist($username, $password);
 	if ($data['user_exist'] > 0) {
+		$_SESSION['id'] = $data['id'];
 		$_SESSION['username'] = $data['username'];
 		$_SESSION['nama'] = $data['nama'];
 		header('location: halamanawal.php');

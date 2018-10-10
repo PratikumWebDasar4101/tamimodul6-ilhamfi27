@@ -16,14 +16,15 @@ class User {
 	}
 
     public function user_exist($username, $password){
-        $query = "SELECT `username`, `nama` FROM `user` WHERE username = '$username' OR password = '$password'";
+        $query = "SELECT `id`, `username`, `nama` FROM `user` WHERE username = '$username' OR password = '$password'";
     	$result = mysqli_query($this -> conn, $query);
     	$user_exist = mysqli_num_rows($result);
         $user_data = mysqli_fetch_array($result);
         $result = array(
                 'user_exist' => $user_exist,
-                'username' => $user_data[0],
-                'nama' => $user_data[1]
+				'id' => $user_data[0],
+                'username' => $user_data[1],
+                'nama' => $user_data[2]
             );
         return $result;
     }
