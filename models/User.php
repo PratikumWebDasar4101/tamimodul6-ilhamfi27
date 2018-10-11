@@ -1,10 +1,7 @@
 <?php
-include_once 'koneksi.php';
-class User {
-	private $conn;
-	public function __construct(){
-		$this->conn = $GLOBALS['conn'];
-	}
+require_once ('My_Model.php');
+
+class User extends My_Model{
 	public function username_exist($username){
 		$query = "SELECT `username` FROM `user` WHERE username = '$username'";
 		$query_success = mysqli_query($this -> conn, $query);
@@ -55,4 +52,40 @@ class User {
             return false;
         }
     }
+
+    public function update_user($id, $username, $password, $nama, $jenis_kelamin, $tanggal_lahir, $photo_url){
+		$query = "UPDATE
+				  `user`
+				SET
+				  `username` = '$username',
+				  `password` = '$password',
+				  `nama` = '$nama',
+				  `jenis_kelamin` = '$jenis_kelamin',
+				  `tanggal_lahir` = '$tanggal_lahir',
+				  `foto` = '$photo_url'
+				WHERE `id` = '$id';
+				";
+		$query_success = mysqli_query($this -> conn, $query);
+        if($query_success){
+            return true;
+        } else {
+            return mysqli_error($this -> conn);
+        }
+    }
+
+	public function user_details($id){
+        $query = "SELECT `id`, `username`, `nama`, `jenis_kelamin`, `tanggal_lahir`, `foto` FROM `user` WHERE id = '$id'";
+    	$result = mysqli_query($this -> conn, $query);
+        $user_data = mysqli_fetch_array($result);
+		$jenis_kelamin = "";
+        $result = array(
+				'id' => $user_data[0],
+                'username' => $user_data[1],
+				'nama' => $user_data[2],
+				'jenis_kelamin' => $user_data[3],
+				'tanggal_lahir' => $user_data[4],
+				'foto' => $user_data[5]
+            );
+        return $result;
+	}
 }

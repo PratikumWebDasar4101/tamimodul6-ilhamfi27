@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'models/User.php';
+require_once '/../models/User.php';
 $u = new User();
 
 if (isset($_POST['submit'])) {
@@ -12,10 +12,12 @@ if (isset($_POST['submit'])) {
 		$_SESSION['id'] = $data['id'];
 		$_SESSION['username'] = $data['username'];
 		$_SESSION['nama'] = $data['nama'];
-		header('location: halamanawal.php');
+		header('location: ../halamanawal.php');
 	} else {
-		$_SESSION['pesan_login_registrasi'] = "Username atau Password Salah atau Akun Belum Terdaftar";
-		header('location: login.php');
+		$_SESSION['pesan_error_login'] = "Username atau Password Salah atau Akun Belum Terdaftar";
+		echo $_POST['password'] . "<br>";
+		echo $password . "<br>";
+		// header('location: ../login.php');
 	}
 }
 ?>

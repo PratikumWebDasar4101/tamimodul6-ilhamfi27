@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['pesan_error_login'])) {
+	echo $_SESSION['pesan_error_login'];
+	unset($_SESSION['pesan_error_login']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
@@ -5,7 +12,7 @@
 		<title>Login</title>
 	</head>
 	<body>
-		<form action="proses_login.php" method="POST" enctype="multipart/form-data">
+		<form action="controller/proses_login.php" method="POST" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td valign="top">Username</td>
