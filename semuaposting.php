@@ -20,25 +20,27 @@ if(!isset($_SESSION['id'])){
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-                    <?php
-                    foreach ($pp -> show_posts() as $d) {
-                    ?>
-                    <div class="row">
-                        <div class="col12">
-                            <table>
-                                <tr>
-                                    <td><?php echo $d['nama'] ?></td>
-                                    <td><?php echo $d['tanggal'] ?></td>
-                                </tr>
-                                    <tr>
-                                        <td colspan="2" style="width:100%;"><?php echo $d['cerita']; ?></td>
-                                    </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                    ?>
+                    <table>
+                        <?php
+                        foreach ($pp -> show_posts() as $d) {
+                        ?>
+                        <tr>
+                            <td><?php echo $d['nama'] ?></td>
+                            <td align="right"><?php echo $d['tanggal'] ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center"><?php echo $d['judul']; ?></td>
+                        </tr>
+                        <tr style="min-height: 200px;">
+                            <td colspan="2" style="width:100%;"><?php echo $d['cerita']; ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height:50px;"></td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                    </table>
 				</div>
 			</div>
 		</div>
