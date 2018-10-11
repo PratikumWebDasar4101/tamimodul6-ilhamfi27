@@ -70,4 +70,19 @@ class Post extends My_Model{
         }
         return $data;
     }
+
+    public function posts_titles($id) {
+        $query = "SELECT
+                  `judul`
+                FROM
+                  `post`
+                WHERE `id_penulis` = '$id'
+                ";
+        $data = array();
+        $result = mysqli_query($this -> conn, $query);
+        while($d = mysqli_fetch_array($result)){
+            array_push($data, $d);
+        }
+        return $data;
+    }
 }

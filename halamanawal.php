@@ -20,7 +20,17 @@ $ha = new Halaman_Awal_Controller();
 		<div class="container">
 			<div class="row">
 				<div class="col-3">
-					asd
+					<table>
+                        <?php
+                        foreach ($ha -> show_user_title_story($id) as $d) {
+                        ?>
+                        <tr>
+                            <td style="width: 100%;"><a href="#"><?php echo $d['judul']; ?></td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                    </table>
 				</div>
 				<div class="col-9">
 					<?php
