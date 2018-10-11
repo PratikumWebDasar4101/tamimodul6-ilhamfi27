@@ -4,6 +4,9 @@ if (isset($_SESSION['pesan_error_login'])) {
 	echo $_SESSION['pesan_error_login'];
 	unset($_SESSION['pesan_error_login']);
 }
+if(isset($_SESSION['id'])){
+    header('location: halamanawal.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

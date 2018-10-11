@@ -8,6 +8,9 @@ if (isset($_SESSION['pesan_error_update_registrasi'])) {
 }
 $nama = $_SESSION['nama'];
 $id = $_SESSION['id'];
+if(!isset($_SESSION['id'])){
+    header('location: login.php');
+}
 $pr = new Proses_Registrasi();
 $d = $pr -> show_user_data($id);
 ?>

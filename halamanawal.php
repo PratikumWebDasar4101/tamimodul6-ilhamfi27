@@ -3,6 +3,9 @@ require_once 'controller/Halaman_Awal_Controller.php';
 session_start();
 $nama = $_SESSION['nama'];
 $id = $_SESSION['id'];
+if(!isset($_SESSION['id'])){
+    header('location: login.php');
+}
 $ha = new Halaman_Awal_Controller();
 ?>
 <!DOCTYPE html>

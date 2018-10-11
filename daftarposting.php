@@ -3,6 +3,9 @@ require_once 'controller/Proses_Posting.php';
 $nama = $_SESSION['nama'];
 $id = $_SESSION['id'];
 $pp = new Proses_Posting();
+if(!isset($_SESSION['id'])){
+    header('location: login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
